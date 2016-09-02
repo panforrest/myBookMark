@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 // import ReactDOM from 'react-dom'
-import Main from '../app/components/Main'
+import Main from './components/Main'
 import store from './stores/store'
 import { Provider } from 'react-redux'
 

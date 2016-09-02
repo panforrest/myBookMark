@@ -17,7 +17,7 @@ var React = _interopRequire(_react);
 var Component = _react.Component;
 var EntryPreview = _interopRequire(require("../../components/EntryPreview"));
 
-var APIManager = _interopRequire(require("../../../utils/APIManager"));
+var APIManager = _interopRequire(require("../../utils/APIManager"));
 
 var actions = _interopRequire(require("../../actions/actions"));
 

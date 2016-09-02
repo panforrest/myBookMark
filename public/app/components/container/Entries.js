@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import EntryPreview from '../../components/EntryPreview'
-import APIManager from '../../../utils/APIManager'
+import APIManager from '../../utils/APIManager'
 
 import actions from '../../actions/actions'
 import store from '../../stores/store'

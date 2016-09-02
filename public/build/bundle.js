@@ -21490,7 +21490,7 @@
 	
 	var _EntryPreview2 = _interopRequireDefault(_EntryPreview);
 	
-	var _APIManager = __webpack_require__(174);
+	var _APIManager = __webpack_require__(209);
 	
 	var _APIManager2 = _interopRequireDefault(_APIManager);
 	
@@ -21643,51 +21643,7 @@
 	exports.default = EntryPreview;
 
 /***/ },
-/* 174 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-																value: true
-	});
-	
-	var _superagent = __webpack_require__(175);
-	
-	var _superagent2 = _interopRequireDefault(_superagent);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	exports.default = {
-	
-																handleGet: function handleGet(endpoint, params, completion) {
-																															_superagent2.default.get(endpoint).query(params).set('Accept', 'application/json').end(function (err, res) {
-																																														if (completion == null) return;
-	
-																																														if (err) {
-																																																													completion(err, null);
-																																																													return;
-																																														}
-	
-																																														if (res.body.confirmation == 'success') completion(null, res.body);else completion({ message: res.body.message }, null);
-																															});
-																},
-	
-																handlePost: function handlePost(endpoint, body, completion) {
-																															_superagent2.default.post(params).send(body).set('Accept', 'application/json').end(function (err, res) {
-																																														if (completion == null) return;
-	
-																																														if (err) {
-																																																													completion(err, null);
-																																																													return;
-																																														}
-	
-																																														if (res.body.confirmation == 'success') completion(null, res.body);else completion({ message: res.body.message }, null);
-																															});
-																}
-	};
-
-/***/ },
+/* 174 */,
 /* 175 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -24994,6 +24950,51 @@
 	}(_react.Component);
 	
 	exports.default = Main;
+
+/***/ },
+/* 209 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _superagent = __webpack_require__(175);
+	
+	var _superagent2 = _interopRequireDefault(_superagent);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	exports.default = {
+	
+	    handleGet: function handleGet(endpoint, params, completion) {
+	        _superagent2.default.get(endpoint).query(params).set('Accept', 'application/json').end(function (err, res) {
+	            if (completion == null) return;
+	
+	            if (err) {
+	                completion(err, null);
+	                return;
+	            }
+	
+	            if (res.body.confirmation == 'success') completion(null, res.body);else completion({ message: res.body.message }, null);
+	        });
+	    },
+	
+	    handlePost: function handlePost(endpoint, body, completion) {
+	        _superagent2.default.post(endpoint).send(body).set('Accept', 'application/json').end(function (err, res) {
+	            if (completion == null) return;
+	
+	            if (err) {
+	                completion(err, null);
+	                return;
+	            }
+	
+	            if (res.body.confirmation == 'success') completion(null, res.body);else completion({ message: res.body.message }, null);
+	        });
+	    }
+	};
 
 /***/ }
 /******/ ]);
