@@ -1,4 +1,4 @@
-import React from 'react'
+// import React from 'react'
 import { applyMiddleware, createStore, combineReducers } from 'redux'
 import thunk from 'redux-thunk' 
 import entriesReducer from '../reducers/entriesReducer'
@@ -8,7 +8,7 @@ var reducers = combineReducers({
 })
 
 var store = createStore(
-	reducers: reducers,
+	reducers,
     applyMiddleware(thunk)
 )
 

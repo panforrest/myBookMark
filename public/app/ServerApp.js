@@ -1,21 +1,18 @@
 import React, { Component } from 'react'
-import ReactDOM from 'react-dom'
+// import ReactDOM from 'react-dom'
 import Main from '../app/components/Main'
 import store from './stores/store'
 import { Provider } from 'react-redux'
 
-class App extends Component {
+class ServerApp extends Component {
 	render() {
 		return (
-
+            <Provider store={store}>
                 <Main />
-
+            </Provider>
 
 		)
 	}
 }
 
-ReactDOM.render(<Provider store={store}>
-	                <App/>
-	            </Provider>, 
-	            document.getElementById('app'))
+export default ServerApp
