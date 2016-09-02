@@ -37,8 +37,13 @@ var EntryPreview = (function (Component) {
 					),
 					React.createElement(
 						"a",
-						{ target: "_blank", href: this.props.entry.url },
+						{ href: this.props.entry.url, style: { textDecoration: "none" }, target: "_blank" },
 						this.props.entry.url
+					),
+					React.createElement(
+						"p",
+						null,
+						this.props.entry.description
 					)
 				);
 			},

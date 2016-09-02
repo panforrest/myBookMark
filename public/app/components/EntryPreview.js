@@ -8,7 +8,8 @@ class EntryPreview extends Component {
 		return(
 			<div style={{border:'1px solid #ddd', background: '#f9f9f9', padding:16}}>
 			    <h3>{this.props.entry.title}</h3>
-			    <a target="_blank" href={this.props.entry.url}>{this.props.entry.url}</a>
+			    <a href={this.props.entry.url} style={{textDecoration:'none'}} target="_blank">{this.props.entry.url}</a>
+			    <p>{this.props.entry.description}</p>
 			</div>
 		)
 	}
