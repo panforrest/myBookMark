@@ -2,14 +2,22 @@ import React, { Component } from 'react'
 import EntryPreview from '../../components/EntryPreview'
 import APIManager from '../../../utils/APIManager'
 
+import actions from '../../actions/actions'
+import store from '../../stores/store'
+import { connect } from 'react-redux'
+import entresReducer from '../../reducers/entriesReducer'
+
 class Entries extends Component {
     constructor(props, context){
     	super(props, context)
     	this.state = {
             entries: [
                 // {id:0, title:'My next project', url:'http://www.herePong.com'},
-                // {id:1, title:'My following project', url:'http://www.bootCamper.com'}    
+                // {id:1, title:'My following project', url:'http://www.bootCamper.com'}  
+
+
             ]
+
     	}
     }
 
@@ -22,17 +30,25 @@ class Entries extends Component {
                 return
             }
 
-            console.log('componentDidMount: '+JSON.stringify(response.results))
-            var results = response.results
-            _this.setState({
-                entries: results
-            })
+            // console.log('componentDidMount: '+JSON.stringify(response.results))
+            // var results = response.results
+            // _this.setState({
+            //     entries: results
+            // })
+            store.dispatch(actions.entriesReceived(response.results))
         })
+
+
+
+
+
     }
 
     render() {
-        var entryList = this.state.entries.map(function(entry, i){
-            return <EntryPreview key={entry.id} entry={entry} />
+
+        var entryList = this.props.entries.map(function(entry, i){
+            return <EntryPreview key={entry._id} entry={entry} />
+
         })
 
 
@@ -43,7 +59,18 @@ class Entries extends Component {
     		</div>
 
     	)
+
+
+    }
+
+
+}
+
+const stateToProps = function(state){
+
+    return {
+        entries: state.entriesReducer.entriesArray
     }
 }
 
-export default Entries
+export default connect(stateToProps)(Entries)
