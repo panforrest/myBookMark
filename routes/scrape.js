@@ -24,8 +24,8 @@ router.get('/:url', function(req, res, next) {
 
         // res.json(response.text)
         $ = cheerio.load(response.text)
-        $('meta').each(function(i){
-        	console.log('META: '+i)
+        $('meta').each(function(i, meta){
+        	console.log('META: '+i, meta)
         })
     })
   
