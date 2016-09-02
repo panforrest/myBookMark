@@ -4,9 +4,21 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
+var mongoose = require('mongoose')
 var routes = require('./routes/index');
 var api = require('./routes/api');
+
+var dbUrl = 'mongodb://localhost/myBookMark'
+mongoose.connect(dbUrl, function(res, err){
+  if (err) {
+     console.log('MongoDB database connection failed!'+err)
+  }
+  else {
+     console.log('MongoDB database successfully connected to: '+dbUrl)
+  }
+})
+
+
 
 var app = express();
 
