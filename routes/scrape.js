@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var superagent = require('superagent')
+var cheerio = require('cheerio')
 
 /* GET users listing. */
 router.get('/:url', function(req, res, next) {
@@ -21,7 +22,11 @@ router.get('/:url', function(req, res, next) {
     		return
     	}
 
-        res.json(response.text)
+        // res.json(response.text)
+        $ = cheerio.load(response.text)
+        $('meta').each(function(i){
+        	console.log('META: '+i)
+        })
     })
   
 });
