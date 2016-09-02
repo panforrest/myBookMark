@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose')
 var routes = require('./routes/index');
 var api = require('./routes/api');
+var scrape = require('./routes/scrape');
 
 var dbUrl = 'mongodb://localhost/myBookMark'
 mongoose.connect(dbUrl, function(res, err){
@@ -36,6 +37,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/api', api);
+app.use('/scrape', scrape);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

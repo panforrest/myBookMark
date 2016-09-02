@@ -65,20 +65,4 @@ router.post('/:resource', function(req, res, next) {
     })
 });
 
-// router.get('/:resource/:id', function(req, res, next) {
-
-//     var resource = req.params.resource
-//     var id = req.params.id
-
-//     if (resource == 'entry'){
-//         var entry = data[id]
-//   	    res.json({
-//   		    confirmation: 'success',
-//   		    entry: entry
-//         })
-//         return
-//     }
-
-// });
-
 module.exports = router;
