@@ -21481,6 +21481,10 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
+	var _EntryPreview = __webpack_require__(173);
+	
+	var _EntryPreview2 = _interopRequireDefault(_EntryPreview);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -21492,19 +21496,29 @@
 	var Entries = function (_Component) {
 	    _inherits(Entries, _Component);
 	
-	    function Entries() {
+	    function Entries(props, context) {
 	        _classCallCheck(this, Entries);
 	
-	        return _possibleConstructorReturn(this, (Entries.__proto__ || Object.getPrototypeOf(Entries)).apply(this, arguments));
+	        var _this = _possibleConstructorReturn(this, (Entries.__proto__ || Object.getPrototypeOf(Entries)).call(this, props, context));
+	
+	        _this.state = {
+	            entries: [{ id: 0, title: 'My next project', url: 'http://www.herePong.com' }, { id: 1, title: 'My following project', url: 'http://www.bootCamper.com' }]
+	        };
+	        return _this;
 	    }
 	
 	    _createClass(Entries, [{
 	        key: 'render',
 	        value: function render() {
+	            var entryList = this.state.entries.map(function (entry, i) {
+	                return _react2.default.createElement(_EntryPreview2.default, { key: entry.id, entry: entry });
+	            });
+	
 	            return _react2.default.createElement(
 	                'div',
 	                null,
-	                'This is Entries component!'
+	                'This is Entries component!',
+	                entryList
 	            );
 	        }
 	    }]);
@@ -21513,6 +21527,64 @@
 	}(_react.Component);
 	
 	exports.default = Entries;
+
+/***/ },
+/* 173 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var EntryPreview = function (_Component) {
+		_inherits(EntryPreview, _Component);
+	
+		function EntryPreview() {
+			_classCallCheck(this, EntryPreview);
+	
+			return _possibleConstructorReturn(this, (EntryPreview.__proto__ || Object.getPrototypeOf(EntryPreview)).apply(this, arguments));
+		}
+	
+		_createClass(EntryPreview, [{
+			key: 'render',
+			value: function render() {
+				return _react2.default.createElement(
+					'div',
+					{ style: { border: '1px solid #ddd', background: '#f9f9f9', padding: 16 } },
+					_react2.default.createElement(
+						'h3',
+						null,
+						this.props.entry.title
+					),
+					_react2.default.createElement(
+						'a',
+						{ target: '_blank', href: this.props.entry.url },
+						this.props.entry.url
+					)
+				);
+			}
+		}]);
+	
+		return EntryPreview;
+	}(_react.Component);
+	
+	exports.default = EntryPreview;
 
 /***/ }
 /******/ ]);

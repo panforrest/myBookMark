@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
-import Entries from './components/Entries'
+import Entries from '../app/components/container/Entries'
 
 class App extends Component {
 	render() {
